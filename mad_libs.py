@@ -48,8 +48,9 @@ def parse(text):
 				prompt.append(char)
 			else:
 				answer = ""
-				while (answer == ""):
-					answer = input("".join(prompt).strip() + ": ")
+				prompt_string = "".join(prompt).strip()
+				while (answer == "" or ("Number" in prompt_string and not answer.isnumeric())):
+					answer = input(prompt_string + ": ")
 				story.append(answer)
 				prompt = []
 				save_prompt = False
