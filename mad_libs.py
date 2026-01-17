@@ -24,6 +24,7 @@
 
 # Dear (Proper Noun (Person’s Name) ), I am writing to you from a (Adjective) castle in an enchanted forest. I found myself here one day after going for a ride on a (Color) (Animal) in (Place). There are (Adjective2) (Magical Creature (Plural)) and (Adjective3) (Magical Creature (Plural)2) here! In the ( Room in a House) there is a pool full of (Noun). I fall asleep each night on a (Noun2) of (Noun(Plural)3) and dream of (Adjective4) ( Noun (Plural)4). It feels as though I have lived here for (Number) ( Measure of time). I hope one day you can visit, although the only way to get here now is (Verb (ending in ing)) on a (Adjective5) (Noun5)!!
 
+import random
 
 def parse(text):
 
@@ -46,7 +47,9 @@ def parse(text):
 			if depth > 1:
 				prompt.append(char)
 			else:
-				answer = input("".join(prompt).strip() + ": ")
+				answer = ""
+				while (answer == ""):
+					answer = input("".join(prompt).strip() + ": ")
 				story.append(answer)
 				prompt = []
 				save_prompt = False
@@ -68,10 +71,14 @@ def main():
         "3": "Dear (Proper Noun (Person’s Name)), I am writing to you from a (Adjective) castle in an enchanted forest. I found myself here one day after going for a ride on a (Color) (Animal) in (Place). There are (Adjective2) (Magical Creature (Plural)) and (Adjective3) (Magical Creature (Plural)2) here! In the ( Room in a House) there is a pool full of (Noun). I fall asleep each night on a (Noun2) of (Noun(Plural)3) and dream of (Adjective4) ( Noun (Plural)4). It feels as though I have lived here for (Number) ( Measure of time). I hope one day you can visit, although the only way to get here now is (Verb (ending in ing)) on a (Adjective5) (Noun5)!!"
     }
 
-    option = ""
+    option = None
 
-    while(not option == "1" and not option == "2" and not option == "3"):
-        option = input("choose a template (1, 2, 3): ")
+    while(not option in ["", "1", "2", "3"]):
+        option = input("Choose a story (1, 2, 3) or hit Enter for random choice: ")
+		
+    if option == "":
+        option = random.choice(["1", "2", "3"])
+        print(f"Provide some data for story number {option}")
 
     text = templates[option]
     story = parse(text)
