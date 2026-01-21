@@ -5,4 +5,4 @@
 
 `git checkout dev`
 
-2. See this PR: [https://github.com/abe511/mad-libs-art-balayan/pull/1](https://github.com/abe511/mad-libs-art-balayan/pull/1)
+2. Leave your review as a *comment* to this PR: [https://github.com/abe511/mad-libs-art-balayan/pull/1](https://github.com/abe511/mad-libs-art-balayan/pull/1)
